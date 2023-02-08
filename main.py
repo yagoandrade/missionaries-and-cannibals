@@ -30,7 +30,7 @@ class ComputeSolution:
                     return True
         def successors(curr_state):
             successor = []
-            # Five possible moves: Move 2 Missionaries, or 2 Cannibals, or 1 M + 1 C, or 1 M only, or 1 C only
+            # Possible moves: Move 2 Missionaries, or 2 Cannibals, or 1 M + 1 C, or 1 M only, or 1 C only, to the other side
             possible_moves = [(2, 0), (0, 2), (1, 1), (1, 0), (0, 1)]
             if curr_state.boat_position == "left":  # boat moves from left to right
                 for move in possible_moves:
@@ -48,8 +48,8 @@ class ComputeSolution:
                         new_state.parent = curr_state
             return successor
 
-        def bfs():  # breadth-first-search (BFS)
-            initial_state = States(initial_missionaries, initial_cannibals, 0, 0, "left")  # root
+        def bfs():  # BFS
+            initial_state = States(initial_missionaries, initial_cannibals, 0, 0, "left")  # starts at root
             if initial_state.goal_state():
                 return initial_state
             queue = deque([])
